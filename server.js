@@ -209,7 +209,7 @@ async function startingSession(interaction) {
 	sessionAuthors.push(interaction.user);
 
 	// set the session timer
-	currentTimeout = setTimeout( startgSession(interaction),
+	currentTimeout = setTimeout( () => startgSession(interaction),
 		countdownTime * 60000); // convert the countdown time to milliseconds
 }
 function startgSession(interaction){
@@ -220,7 +220,7 @@ function startgSession(interaction){
 	// send a message to the channel
 	interaction.channel.send(notifAuthor() + getRandomLine(botLines["SESSION_STARTED"]).replace("%s", genTime(sessionTime)));
 	// set the session timer
-	currentTimeout = setTimeout( endingSession(interaction)
+	currentTimeout = setTimeout( () => endingSession(interaction)
 		, sessionTime * 60000); // convert the session time to milliseconds
 }
 function endingSession(interaction){
@@ -231,7 +231,7 @@ function endingSession(interaction){
 	interaction.channel.send(`le temps pour soumettre votre nombre de mots se finira ${genTime(SUBMITCOUNTDOWN)}, pour me dire combien de mots vous avez écrit en utilisant la commande /mots`);
 	submitTime = true
 
-	currentTimeout = setTimeout( endingSubmitTime(interaction)
+	currentTimeout = setTimeout( () => endingSubmitTime(interaction)
 		, SUBMITCOUNTDOWN*60000); // convert the session time to milliseconds
 }
 function endingSubmitTime(interaction){
