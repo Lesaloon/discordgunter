@@ -22,7 +22,7 @@ let sessionAuthors = []; // a list of the authors that joined the session
 let words = {}; // a dictionary of the authors and their word count
 let currentTimeout = null; // the current timeout that is running
 
-clamp = function(value, min, max) {
+const clamp = function(value, min, max) {
 	return Math.min(Math.max(value, min), max);
 };
 
