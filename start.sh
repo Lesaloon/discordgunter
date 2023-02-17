@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+cd /discordbot/discordgunter
 while 1; do
-	node /discordbot/discordgunter/server.js
+	node server.js
+	git pull
 done
