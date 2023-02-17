@@ -274,7 +274,7 @@ client.on('interactionCreate', async interaction => {
 	}
 	else if (interaction.commandName === 'session') {
 		// if there is already a session going on
-		if (session || sessionInCountdown || sessionInSubmission) {
+		if (session || sessionInCountdown || submitTime) {
 			await interaction.reply(getRandomLine(botLines["SESSION_ALREADY_STARTED"]));
 		}
 		// if there is no session going on
