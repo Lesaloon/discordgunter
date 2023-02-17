@@ -350,7 +350,7 @@ client.on('interactionCreate', async interaction => {
 			// reset the sessionInCountdown variable
 			sessionInCountdown = false;
 			// reset the sessionInSubmission variable
-			sessionInSubmission = false;
+			submitTime = false;
 		} else {
 			// tell the user that he is not an admin
 			await interaction.reply(getRandomLine(botLines["NOT_ADMIN"]));
