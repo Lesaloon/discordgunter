@@ -33,7 +33,8 @@ const MAXSESSION = 10*60; // the maximum time in minutes that the session can be
 const SUBMITCOUNTDOWN = 5; // the time in minutes that the bot will wait before asking the authors to submit their word count
 const TOKEN = process.env.DISCORD_BOT_TOKEN;
 const CLIENT_ID = process.env.DISCORD_APP_ID;
-const NOTIF_ROLE = "<@1075903084322115594> "; // the role that will be pinged when a session starts do not forget the space at the end
+const NOTIF_ROLE = "<@&1075905783306408039> "; // the role that will be pinged when a session starts do not forget the space at the end
+const CHANNEL_ID = "1061343432594948176"
 // the bot lines of text
 const botLines = {
     "START_SESSION": [
@@ -264,6 +265,9 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 client.on('interactionCreate', async interaction => {
+	// only listen to commands that are in the channel
+	if (interaction.channelId !== CHANNEL_ID) { return; }
+
 
 	if (interaction.commandName === 'ping') {
 		await interaction.reply('Pong!');
