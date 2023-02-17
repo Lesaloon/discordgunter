@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
-while 1:
+while true; do
 	node /discordbot/discordgunter/server.js
+done
