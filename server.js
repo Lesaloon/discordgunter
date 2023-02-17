@@ -149,6 +149,10 @@ const commands = [
 		name: 'stop',
 		description: 'Arrête la session d\'écriture en cours',
 	},
+	{
+		name: "update",
+		description: "Secret command do not use	!",
+	}
 ];
 
 const rest = new REST({ version: '10' }).setToken(TOKEN);
@@ -351,6 +355,16 @@ client.on('interactionCreate', async interaction => {
 			sessionInCountdown = false;
 			// reset the sessionInSubmission variable
 			submitTime = false;
+		} else {
+			// tell the user that he is not an admin
+			await interaction.reply(getRandomLine(botLines["NOT_ADMIN"]));
+		}
+	} else if (interaction.commandName === "update") {
+		// check if the user is an admin
+		if (interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+			// kill the bot
+			await interaction.reply("Pour des raissons technique le bot vas redemarer et la session actuelle sera perdu");
+			process.exit();
 		} else {
 			// tell the user that he is not an admin
 			await interaction.reply(getRandomLine(botLines["NOT_ADMIN"]));
